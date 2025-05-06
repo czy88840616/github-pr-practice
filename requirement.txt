@@ -2,8 +2,9 @@
 <development_handbooks>
 
 <project_structure_guidelines>
-- Top-level folders `client` are used to organize front-end code.
-- Top-level folders `server` are used to organize back-end code.
+- This is a react + vite + pnpm initialize project.
+- Folders `src` are used to organize front-end code.
+- The front-end page can be directly placed under `src`.
 </project_structure_guidelines>
 
 <image_guidelines>
