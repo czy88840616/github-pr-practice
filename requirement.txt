@@ -2,7 +2,7 @@
 <development_handbooks>
 
 <project_structure_guidelines>
-- This is a react + vite + pnpm initialize project.
+- This is a react + vite + pnpm + tailwind initialize project.
 - Folders `src` are used to organize front-end code.
 - The front-end page can be directly placed under `pages`.
 </project_structure_guidelines>
