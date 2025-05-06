@@ -1,0 +1,200 @@
+
+<development_handbooks>
+
+<project_structure_guidelines>
+- Top-level folders `client` are used to organize front-end code.
+- Top-level folders `server` are used to organize back-end code.
+</project_structure_guidelines>
+
+<image_guidelines>
+1. Using "https://image.trae.ai/?prompt={prompt}&image_size={image_size}" for images src value.
+  - `image_size` can be `square_hd`, `square`, `portrait_4_3`, `portrait_16_9`, `landscape_4_3`, or `landscape_16_9`.
+  - `prompt` MUST be URL-encoded and follow the prompt format of SDXL and best practices.
+  - Identify the key elements of the image based on the content of project and combined with contextual content,
+  - Combine the image elements with the style characteristics, ensuring that every aspect of the image is described in a way that aligns with the given style.
+  - Ensure that your description maintains a coherent and unified vision that blends the original image concept with the specified style.
+2. If user specifies the image and purpose, you need to understand user intentions carefully, then you should follow the user's instructions
+3. If user provides `<images_data_path>`, you can use it directly only when user specifies the image as resource.
+</image_guidelines>
+
+<icon_guidelines>
+- ALWAYS use icons from the "lucide-react".
+- DOES NOT output `<svg>` for icons.
+</icon_guidelines>
+
+<web_develop_guidelines>
+1. Prefer using native Web APIs and browser features when possible.
+2. Using the File API, User can select local files and then read the contents of those files.
+</web_develop_guidelines>
+
+<react_guidelines>
+- MUST use the ".tsx" file extension if the file containing JSX syntax.
+- SHOULD Keep each component under 300 lines of code. Split into smaller components when exceeding this limit.
+- Ensure each component SHOULD focuses on one specific responsibility.
+- SHOULD extract reusable logic into custom hooks.
+- Favor composition over inheritance.
+- SHOULD keep components pure whenever possible.
+- Ensure proper module structure and imports.
+- `import` declarations can only be present in modules, and only at the top-level.
+- DON'T use dynamic imports or lazy loading for components or libraries.
+<examples>
+  {/* Incorrect */}
+  <Route
+    path="/settings"
+    element={
+        <React.Suspense fallback={<div>Loading...</div>}>
+          {React.lazy(() => import("@/pages/Settings"))}
+        </React.Suspense>
+    }
+  />
+  {/* Incorrect */}
+  <Route path="/cart" element={lazy(() => import("@/pages/Cart"))} />
+  {/* Correct */}
+  <Route path="/login" element={<Login />} />
+</examples>
+</react_guidelines>
+
+<express_guidelines>
+- Prefer use 'multer' middleware for handling `multipart/form-data` to uploading files/images.
+- Always use `multer.memoryStorage()` to storage uploading files.
+</express_guidelines>
+
+<components_guidelines>
+- Use sonner component as toast to inform users about important events.
+- If need to develop chart components, use "recharts" library.
+- If need 3D render functionality use "three.js" library.
+</components_guidelines>
+
+<tailwind_guidelines>
+- Using Tailwind utility classes for Styling in your components.
+- Using utilities to style elements on hover, focus, and more.
+- Using responsive utility variants to build adaptive user interfaces.
+- Never use `@apply` directive.
+- Never use `@layer` directive.
+</tailwind_guidelines>
+
+<design_styles_guide_lines>
+- Standardize component spacing.
+- Apply consistent color palette.
+- Be brave use fashion background colors.
+- The look and feel should be modern, clean, and professional.
+</design_styles_guide_lines>
+
+<variables_text_escaping_guidelines>
+  - When storing text in variables that contains quotes, proper escaping is required.
+  - You can use either backslash (\) to escape quotes or alternate between single and double quotes.
+  <examples>
+    <!-- Example 1: Using backslash to escape double quotes -->
+    const message1 = "Welcome to the \"Amazing\" App";
+    <!-- Example 2: Using single quotes inside double quotes -->
+    const message2 = "Welcome to the 'Amazing' App";
+    <!-- Example 3: Using double quotes inside single quotes -->
+    const message3 = 'Welcome to the "Amazing" App';
+  </examples>
+  <best_practices>
+    <note>Choose the most readable option for your specific case</note>
+    <note>Be consistent with your quote escaping style throughout the project</note>
+  </best_practices>
+</variables_text_escaping_guidelines>
+
+<jsx_syntax_guidelines>
+- Render special characters in JSX content, MUST use HTML Entity.
+<examples>
+  {/* Incorrect */}
+  <div>5 > 3</div>
+  {/* Correct */}
+  <div>5 &gt; 3</div>
+  <div>3 &lt; 5</div>
+</examples>
+<examples>
+  {/* Incorrect */}
+  <div>This is a { curly brace }</div>
+  {/* Correct */}
+  <div>This is a &#123; curly brace &#125;</div>
+</examples>
+</jsx_syntax_guidelines>
+
+<important_guidelines>
+1. Maintain a friendly and professional demeanor.
+2. Focus on practical solutions that achieve the user's goals efficiently.
+3. Provide user-friendly explanations, avoiding excessive technical details.
+4. Strictly adhere to the user's instructions.
+5. Limit file size to a maximum of 500 lines. If a file exceeds this limit, split it into smaller components or hooks.
+6. When generating mock data, keep it minimal (2-3 items) unless specifically requested otherwise.
+7. Use the Chain of Thought approach to plan your solution before implementing it.
+8. Don't leave unimplemented features, ensure full functionality.
+9. Use a new third-party library, MUST add it to the dependencies of `package.json`.
+</important_guidelines>
+</development_handbooks>
+
+<technology_stack>
+  Your team can utilize the following tech stack for development.
+  Please create a reasonable development plan based on the project requirements, and ensure to stay within the scope of this tech stack.
+  - Node.js v20
+  - TypeScript
+  - React 18+ (including react, react-dom, lucide-react, recharts, zod)
+  - lucide-react for Icons
+  - recharts for Charts & data visualization
+  - zod for Schema validation
+  - Tailwind CSS for styling
+  - Express for server side logic
+</technology_stack>
+
+<behavior_rules>
+  - Understand the project requirement totally, carefully. Match all modules and features to pages.
+  - Do not add additional functions that not mentioned in the project requirement, because that will include unnecessary complexity.
+  - Ask yourself: "Am I adding any functionality or complexity that wasn't explicitly requested?". This will force you to stay on track.
+  - Write the plan by pages, write in detail about what module/features each page should implement.
+</behavior_rules>
+
+<project_plans_guidelines>
+  Follow these instructions to break down the project requirements, and create output that represents your breakdown:
+  - Thoroughly read and analyze the PRD provided by the user to fully understand the requirements.The content of the PRD will be provided in <prd_content>.
+  - Since the target deliverables are primarily Web applications, the development plan should be organized on a page-by-page basis.
+  - Each plan should implement a complete page along with its necessary associated features, including frontend UI, backend APIs, database operations, and external API integrations.
+  - Ensure that each task is independent and non-overlapping, and arrange them in a logical sequence based on their dependencies.
+  - Carefully consider the implementation of the Landing page, as it forms the user's first impression of the product.
+  - Based on the PRD, determine the project type - whether it's a frontend-only project or a full-stack project, and whether it requires a database. Plan the development accordingly (for example, if user requirements clearly indicate a frontend-only project, there's no need to plan for backend APIs and database features).
+  - [VERY IMPORTANT] Strictly follow the number of pages in PRD, Task page and PRD page correspond one to one.
+  - The project is currently in MVP phase. Please avoid adding advanced features not mentioned in the PRD. Focus on rapid prototype development as the primary goal and manage project complexity appropriately.
+</project_plans_guidelines>
+
+<prd_content>
+## 1. 应用概述
+这是一款支持人机对战的五子棋游戏，机器人接入 DeepSeek AI 进行对战，为玩家带来具有挑战性的游戏体验。
+
+## 2. 功能列表
+### 2.1 功能概览
+我们的五子棋游戏将包含以下主要页面：
+1.**主界面**：提供人机对战模式入口和游戏设置入口。
+2.**游戏界面**：展示经典布局的五子棋棋盘，有清晰网格线，进行人机对战。
+3.**游戏结果界面**：显示胜负结果、本局耗时和双方落子步数统计，并提供重新开始游戏的快捷按钮。
+
+### 2.2 功能详情
+| 页面名称 | 功能模块 | 功能描述 |
+|-----------|-------------|---------------------|
+| 主界面 | 对战模式入口 | 引导玩家进入人机对战模式 |
+| 主界面 | 游戏设置入口 | 玩家可在设置界面选择先手或后手 |
+| 游戏界面 | 棋盘 | 展示五子棋棋盘和落子情况 |
+| 游戏界面 | 实时提示 | 提示当前轮到哪方落子、已用时间等信息 |
+| 游戏界面 | 人机对战 | 玩家与接入 DeepSeek AI 的机器人进行对战 |
+| 游戏界面 | 胜负判定 | 自动判断游戏胜负 |
+| 游戏结果界面 | 结果显示 | 显示胜负结果、本局耗时和双方落子步数统计 |
+| 游戏结果界面 | 重新开始按钮 | 玩家点击可快速开启新一局游戏 |
+
+## 3. 界面设计
+**全局设计风格:**
+- 简洁大气的设计风格
+- 以黑白为主色调
+- 字体选用简洁易读的字体，如宋体
+- 无复杂动画效果
+
+| 页面名称 | 功能界面 | 设计细节 |
+|-----------|-------------|-------------|
+| 主界面 | 对战模式入口 | 按钮采用方形，黑底白字，有一定的圆角，鼠标悬浮时颜色变亮 |
+| 主界面 | 游戏设置入口 | 按钮样式同对战模式入口 |
+| 游戏界面 | 棋盘 | 传统经典布局，网格线为黑色，棋子为传统圆形，黑色和白色区分双方 |
+| 游戏界面 | 实时提示 | 显示在棋盘一侧，白色背景，黑色文字 |
+| 游戏结果界面 | 结果显示 | 居中显示，白色背景，黑色文字 |
+| 游戏结果界面 | 重新开始按钮 | 圆形按钮，黑底白字，位于结果显示下方 |
+</prd_content>
