@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub PR 练习项目</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 错误1: 缺少闭合标签 -->
+    <meta name="description" content="这是一个用于练习GitHub PR流程的项目"
+</head>
+<body>
+    <header>
+        <h1>欢迎来到 GitHub PR 练习项目</h1>
+        <!-- 错误2: 标签拼写错误 -->
+        <nave>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nave>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>关于本项目</h2>
+            <!-- 错误3: 段落标签未闭合 -->
+            <p>这个项目旨在帮助你学习如何在GitHub上提交Pull Request
+            <p>通过修复这些代码中的错误，你将获得实际的PR提交经验。</p>
+        </section>
+
+        <section id="features">
+            <h2>项目特点</h2>
+            <ul>
+                <!-- 错误4: 列表项未闭合 -->
+                <li>简单易懂的代码结构
+                <li>包含多种类型的错误</li>
+                <li>详细的贡献指南</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>联系我们</h2>
+            <!-- 错误5: 表单标签未闭合 -->
+            <form>
+                <div class="form-group">
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">留言:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">提交</button>
+            <!-- 表单标签未闭合 -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 GitHub PR 练习项目</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
